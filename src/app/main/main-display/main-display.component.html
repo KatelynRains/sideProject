@@ -1,0 +1,87 @@
+<H2>LTL Rate Calculator</H2>
+<button (click)="getRates()" class="btn btn-primary">Get Rates</button>
+<br>
+<div>
+    <table>
+    <tr>
+        <th>CustomerId:</th>
+        <td><input [(ngModel)] = "customerid" type="number"></td>
+    </tr>
+    <tr>
+        <th>CarrierId:</th>
+        <td><input [(ngModel)] = "carrierid" type="number"></td>
+    </tr>
+    <tr>
+        <th>OriginStateCode:</th>
+        <td><input [(ngModel)] = "originstate" type="text"></td>
+    </tr>
+    <tr>
+        <th>DestinationStateCode:</th>
+        <td><input [(ngModel)] = "destinationstate" type="text"></td>
+    </tr>
+    </table>
+   
+</div>
+<div *ngIf="showMainForm">
+    <div>
+<table>
+    <tr>
+        <th>Customer Name: </th>
+        <td>{{rates.customerName}}</td>
+    </tr>
+    <tr>
+        <th>Carrier Name: </th>
+        <td>{{rates.carrierName}}</td>
+    </tr>
+    <tr>
+        <th>Average Bill: </th>
+        <td>{{rates.averageBill|currency}}</td>
+    </tr>
+    <tr>
+        <th>Average Pay: </th>
+        <td>{{rates.averagePay|currency}}</td>
+    </tr>
+    <tr>
+        <th>Average BR: </th>
+        <td>{{rates.averageBR|currency}}</td>
+    </tr>
+</table>
+    </div>
+    <div>
+<table>
+    <tr>
+        <th>Bill per Pound</th>
+        <td>{{rates.billperPound|currency}}</td>
+    </tr>
+    <tr>
+        <th>Pay per Pound</th>
+        <td>{{rates.payperPound|currency}}</td>
+    </tr>
+    <tr>
+        <th>BR per Pound</th>
+        <td>{{rates.bRperPound|currency}}</td>
+    </tr>
+    <tr>
+        <th>Bill per Mile</th>
+        <td>{{rates.billperMile|currency}}</td>
+    </tr>
+    <tr>
+        <th>Pay per Mile</th>
+        <td>{{rates.payperMile|currency}}</td>
+    </tr>
+    <tr>
+        <th>BR per Mile</th>
+        <td>{{rates.bRperMile|currency}}</td>
+    </tr>
+</table>    
+    </div>
+    </div>
+    <table *ngIf= "rates">
+        <tr>
+            <th>Weight(in lbs):</th>
+            <td><input [(ngModel)]= "userWeight" type="number"></td>
+            <th>bill per pound</th>
+            <td>{{(+userWeight*+rates.billperPound | currency)}}</td>
+        </tr>
+   </table>
+

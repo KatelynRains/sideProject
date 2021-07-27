@@ -1,7 +1,51 @@
-div{
+.toptbl{
     
-    width: 49%;
+    width: 30%;
     display: inline-block;
     vertical-align: top;
+    text-align: left;
     min-height: 300px;
+    margin-right: 10px;
 }
+
+nav{
+    background-color: #454545;
+    width:100%;
+    height: 50px;
+    display:inline-block;}
+   
+
+img {
+    width: 100px;
+    height: 50px;
+    object-fit: contain;
+    }
+ span{
+    font-size: larger;
+    color:white;
+     height: 50px;
+     font-weight: bold;
+     text-align: end;
+ }   
+ p{
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+ }
+#calculator{    
+    border: 1px solid black;
+    width: 300px;
+    height:100px;
+    margin-left: 10px;
+    padding:5px;
+    background-color: #DCDCDC;
+    border-radius: 7px;
+ }
+ .btmtbl{
+    width: 30%;
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    min-height: 300px;
+    margin-right: 10px;
+
+ }

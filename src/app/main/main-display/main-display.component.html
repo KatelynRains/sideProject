@@ -1,8 +1,13 @@
-<H2>LTL Rate Calculator</H2>
-<button (click)="getRates()" class="btn btn-primary">Get Rates</button>
+<nav>
+<img src="assets/Images/tql-logo.6646d1b8.png"> 
+<span>      LTL Rate Calculator</span>
+</nav>
+<p>Average LTL rates over the last 90 days</p>
+<button (click)="getRates()" class="btn btn-outline-primary m-1">Get Rates</button>
 <br>
-<div>
+<div class="toptbl">
     <table>
+        <tbody>
     <tr>
         <th>CustomerId:</th>
         <td><input [(ngModel)] = "customerid" type="number"></td>
@@ -19,69 +24,121 @@
         <th>DestinationStateCode:</th>
         <td><input [(ngModel)] = "destinationstate" type="text"></td>
     </tr>
+    </tbody>
     </table>
-   
 </div>
-<div *ngIf="showMainForm">
+
+<div class = "toptbl" *ngIf="showMainForm">
     <div>
-<table>
-    <tr>
-        <th>Customer Name: </th>
-        <td>{{rates.customerName}}</td>
-    </tr>
-    <tr>
-        <th>Carrier Name: </th>
-        <td>{{rates.carrierName}}</td>
-    </tr>
-    <tr>
-        <th>Average Bill: </th>
-        <td>{{rates.averageBill|currency}}</td>
-    </tr>
-    <tr>
-        <th>Average Pay: </th>
-        <td>{{rates.averagePay|currency}}</td>
-    </tr>
-    <tr>
-        <th>Average BR: </th>
-        <td>{{rates.averageBR|currency}}</td>
-    </tr>
-</table>
+        <table class="table table-striped">
+            <tbody>
+            <tr>
+                <th>Customer Name: </th>
+                <td>{{rates.customerName}}</td>
+            </tr>
+            <tr>
+                <th>Carrier Name: </th>
+                <td>{{rates.carrierName}}</td>
+            </tr>
+            <tr>
+                <th>Average Bill: </th>
+                <td>{{rates.averageBill|currency}}</td>
+            </tr>
+            <tr>
+                <th>Average Pay: </th>
+                <td>{{rates.averagePay|currency}}</td>
+            </tr>
+            <tr>
+                <th>Average BR: </th>
+                <td>{{rates.averageBR|currency}}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-    <div>
-<table>
-    <tr>
-        <th>Bill per Pound</th>
-        <td>{{rates.billperPound|currency}}</td>
-    </tr>
-    <tr>
-        <th>Pay per Pound</th>
-        <td>{{rates.payperPound|currency}}</td>
-    </tr>
-    <tr>
-        <th>BR per Pound</th>
-        <td>{{rates.bRperPound|currency}}</td>
-    </tr>
-    <tr>
-        <th>Bill per Mile</th>
-        <td>{{rates.billperMile|currency}}</td>
-    </tr>
-    <tr>
-        <th>Pay per Mile</th>
-        <td>{{rates.payperMile|currency}}</td>
-    </tr>
-    <tr>
-        <th>BR per Mile</th>
-        <td>{{rates.bRperMile|currency}}</td>
-    </tr>
-</table>    
-    </div>
-    </div>
-    <table *ngIf= "rates">
+</div>
+<div class="toptbl" *ngIf="showMainForm">
+    <table class="table table-striped">
+        <tbody>
         <tr>
-            <th>Weight(in lbs):</th>
-            <td><input [(ngModel)]= "userWeight" type="number"></td>
-            <th>bill per pound</th>
-            <td>{{(+userWeight*+rates.billperPound | currency)}}</td>
+            <th>Bill per Pound:</th>
+            <td>{{rates.billperPound|currency}}</td>
+        </tr>
+        <tr>
+            <th>Pay per Pound:</th>
+            <td>{{rates.payperPound|currency}}</td>
+        </tr>
+        <tr>
+            <th>BR per Pound:</th>
+            <td>{{rates.bRperPound|currency}}</td>
+        </tr>
+        <tr>
+            <th>Bill per Mile:</th>
+            <td>{{rates.billperMile|currency}}</td>
+        </tr>
+        <tr>
+            <th>Pay per Mile:</th>
+            <td>{{rates.payperMile|currency}}</td>
+        </tr>
+        <tr>
+            <th>BR per Mile:</th>
+            <td>{{rates.bRperMile|currency}}</td>
+        </tr>
+        </tbody>
+    </table>    
+</div>
+ <div *ngIf="showMainForm">
+<p>Calculator: to compare with average rates</p>
+<div class = btmtbl>
+<div id="calculator">
+    <table *ngIf= "rates" >
+       <tr>
+            <th>Weight(in&nbsp;lbs):</th>
+            <td><input [(ngModel)]= "userWeight" type="number" style="width:100px;"></td>  
+        </tr>
+        <tr>
+            <th>Mileage:</th>
+            <td><input [(ngModel)]= "userMileage" type="number" style="width:100px;"></td>
         </tr>
    </table>
+</div>   
+</div>
+<div class = btmtbl>
+   <table *ngIf= "rates" class="table table-striped">
+       <tbody>
+    <tr>
+        <th> Bill based on Weight:</th>
+        <td>{{(+userWeight*+rates.billperPound | currency)}}</td>
+    </tr>
+    <tr>
+        <th> Pay based on Weight:</th>
+        <td>{{(+userWeight*+rates.payperPound | currency)}}</td>
+    </tr>
+    <tr>
+        <th> BR based on Weight:</th>
+        <td>{{(+userWeight*+rates.bRperPound | currency)}}</td>
+    </tr>
+    </tbody>
+   </table>
+</div>
+<div class = btmtbl>
+   <table *ngIf= "rates" class="table table-striped">
+       <tbody>
+    <tr>
+         <th> Bill based on Mileage:</th>
+         <td>{{(+userMileage*+rates.billperPound | currency)}}</td>
+    </tr>
+    <tr>    
+         <th> Pay based on Mileage:</th>
+         <td>{{(+userMileage*+rates.payperPound | currency)}}</td>
+    </tr>
+    <tr>
+         <th> BR based on Mileage:</th>
+         <td>{{(+userMileage*+rates.bRperPound | currency)}}</td>
+     </tr>
+       </tbody>
+    </table>
+</div>
+
+
+   
 
